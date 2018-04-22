@@ -1,0 +1,4 @@
+{
+  "preset": "airbnb",
+  "excludeFiles": ["public/js/lib"]
+}
