@@ -3,11 +3,8 @@ import random from 'lodash/random';
 import Drawable from './Drawable';
 
 class Floor extends Drawable {
-  constructor(x, y, w, h, percent) {
-    const realY = y + (h * percent);
-    super(x, realY, w, h);
-
-    this.originalY = y;
+  constructor(x, y, w, h) {
+    super(x, y, w, h);
 
     const colours = [
       'crimson',
@@ -25,7 +22,7 @@ class Floor extends Drawable {
 
     context.beginPath();
     context.fillStyle = this.colour;
-    context.fillRect(this.x1, this.originalY, this.width, this.height);
+    context.fillRect(this.x1, this.y1, this.width, this.height);
   }
 }
 

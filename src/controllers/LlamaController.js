@@ -1,11 +1,11 @@
 import autobind from 'autobind-decorator';
-import find from 'lodash/find';
+import filter from 'lodash/filter';
 
 import Llama from '../models/Llama';
 
-const FALL_SPEED = 3;
-const JUMP_SPEED = 4;
-const JUMP_HEIGHT = 200;
+const FALL_SPEED = 6;
+const JUMP_SPEED = 8;
+const JUMP_HEIGHT = 180;
 
 class LlamaController {
   constructor() {
@@ -32,8 +32,8 @@ class LlamaController {
       this.calculateJump();
     }
 
-    const solid = this.getIntersectingSolid(solids);
-    this.adjustLlamaY(solid);
+    const intersectingSolids = this.getIntersectingSolid(solids);
+    this.adjustLlama(intersectingSolids);
 
     this.llama.paint(canvas, context);
   }
@@ -46,20 +46,24 @@ class LlamaController {
     this.llama.y1 = nextJump;
   }
 
-  adjustLlamaY(solid) {
+  adjustLlama(solids) {
     let shouldFall = false;
 
-    if (solid && this.isSolidBelow(solid)) {
-      this.llama.y1 = (solid.y1 - this.llama.height);
-      this.canJump = true;
-    }
+    solids.forEach((solid) => {
+      if (solid && this.isSolidBelow(solid)) {
+        this.llama.y1 = (solid.y1 - this.llama.height);
+        this.canJump = true;
+      }
 
-    if (solid && this.isSolidAbove(solid)) {
-      this.llama.x1 = (solid.x1 - this.llama.width);
-      shouldFall = true;
-    }
+      if (solid && this.isSolidAbove(solid)) {
+        this.llama.x1 = (solid.x1 - this.llama.width);
+        if (solid.y2 !== this.llama.y2) {
+          shouldFall = true;
+        }
+      }
+    });
 
-    if (!this.isJumping && (!solid || shouldFall)) {
+    if (!this.isJumping && (solids.length === 0 || shouldFall)) {
       this.llama.y1 += FALL_SPEED;
       this.canJump = false;
     }
@@ -69,7 +73,7 @@ class LlamaController {
   isSolidAbove = solid => solid.y1 < this.llama.y2;
 
   getIntersectingSolid = solids =>
-    find(solids, s => !(
+    filter(solids, s => !(
       s.x1 > this.llama.x2 ||
       s.x2 < this.llama.x1 ||
       s.y1 > this.llama.y2 + FALL_SPEED ||
