@@ -1,11 +1,12 @@
 import reduce from 'lodash/reduce';
 
 import Score from '../models/Score';
+import FloorController from '../controllers/FloorController';
 
 const SCENES = [
   { name: 'top', percent: 10 },
-  { name: 'middle', percent: 60 },
-  { name: 'bottom', percent: 30 }
+  { name: 'middle', percent: 70 },
+  { name: 'bottom', percent: 20 }
 ];
 
 class SceneController {
@@ -13,10 +14,12 @@ class SceneController {
     this.scenes = this.defineScenes(canvas);
 
     this.score = new Score(this.scenes.top);
+    this.floorController = new FloorController(this.scenes.bottom);
   }
 
-  paint(canvas, context) {
-    this.score.paint(canvas, context);
+  paint(context, speed) {
+    this.score.paint(context);
+    this.floorController.paint(context, speed);
   }
 
   defineScenes = (canvas) => {

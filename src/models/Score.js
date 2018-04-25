@@ -6,7 +6,7 @@ class Score {
     this.score = 0;
   }
 
-  paint(canvas, context) {
+  paint(context) {
     this.score += 1;
 
     context.beginPath();
