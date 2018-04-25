@@ -8,8 +8,12 @@ const JUMP_SPEED = 8;
 const JUMP_HEIGHT = 180;
 
 class LlamaController {
-  constructor() {
-    this.llama = new Llama();
+  constructor(scene) {
+    this.scene = scene;
+
+    const desiredHeight = this.scene.height * 0.3;
+    this.llama = new Llama(this.scene, desiredHeight);
+
     this.isJumping = false;
     this.canJump = false;
 
@@ -27,7 +31,7 @@ class LlamaController {
     }
   }
 
-  paint(canvas, context, speed, solids) {
+  paint(context, speed, solids) {
     if (this.isJumping) {
       this.calculateJump();
     }
@@ -35,7 +39,7 @@ class LlamaController {
     const intersectingSolids = this.getIntersectingSolid(solids);
     this.adjustLlama(intersectingSolids);
 
-    this.llama.paint(canvas, context);
+    this.llama.paint(context);
   }
 
   calculateJump() {
