@@ -4,18 +4,19 @@ import random from 'lodash/random';
 import Barrel from '../models/Barrel';
 
 class ObstacleController {
-  constructor() {
+  constructor(scene) {
+    this.scene = scene;
     this.obstacles = [];
   }
 
-  paint(canvas, context, speed) {
-    this.obstacles.forEach(o => o.paint(canvas, context, speed));
+  paint(context, speed) {
+    this.obstacles.forEach(o => o.paint(context, speed));
 
     this.obstacles = filter(this.obstacles, o => o.x2 > 0);
 
     if (random(0, 120) === 0) {
-      const y = canvas.height - 180 - 120;
-      this.obstacles.push(new Barrel(canvas.width, y, 50, 120));
+      const desiredHeight = this.scene.height * 0.2;
+      this.obstacles.push(new Barrel(this.scene, desiredHeight));
     }
   }
 }
