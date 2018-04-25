@@ -1,5 +1,7 @@
 import reduce from 'lodash/reduce';
 
+import Score from '../models/Score';
+
 const SCENES = [
   { name: 'top', percent: 10 },
   { name: 'middle', percent: 60 },
@@ -9,6 +11,12 @@ const SCENES = [
 class SceneController {
   constructor(canvas) {
     this.scenes = this.defineScenes(canvas);
+
+    this.score = new Score(this.scenes.top);
+  }
+
+  paint(canvas, context) {
+    this.score.paint(canvas, context);
   }
 
   defineScenes = (canvas) => {
@@ -19,6 +27,8 @@ class SceneController {
       const currentY2 = currentY1 + currHeight;
 
       agg[curr.name] = {
+        x1: 0,
+        x2: canvas.width,
         y1: currentY1,
         y2: currentY2,
         height: currHeight,

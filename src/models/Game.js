@@ -24,6 +24,8 @@ class Game extends Reavas {
   }
 
   paint(canvas, context) {
+    this.sceneController.paint(canvas, context);
+
     this.floorController.paint(canvas, context, this.speed);
     this.obstacleController.paint(canvas, context, this.speed);
     this.llamaController.paint(canvas, context, this.speed, this.getSolids());
