@@ -8,7 +8,7 @@ const JUMP_SPEED = 8;
 const JUMP_HEIGHT = 180;
 
 class LlamaController {
-  constructor(scene) {
+  constructor(scene, canvas) {
     this.scene = scene;
 
     const desiredHeight = this.scene.height * 0.3;
@@ -18,16 +18,29 @@ class LlamaController {
     this.canJump = false;
 
     document.addEventListener('keydown', this.onKeyDown);
+    document.addEventListener('keyup', this.onKeyUp);
+
+    canvas.addEventListener('mousedown', this.doJump);
+    canvas.addEventListener('mouseup', this.doFall);
+  }
+
+  onKeyDown = e => e.which === 32 && this.doJump();
+
+  onKeyUp = e => e.which === 32 && this.doFall();
+
+  @autobind
+  doJump() {
+    if (!this.isJumping && this.canJump) {
+      this.isJumping = true;
+      this.canJump = false;
+      this.maxJump = this.llama.y1 - JUMP_HEIGHT;
+    }
   }
 
   @autobind
-  onKeyDown(e) {
-    if (e.which === 32) {
-      if (!this.isJumping && this.canJump) {
-        this.isJumping = true;
-        this.canJump = false;
-        this.maxJump = this.llama.y1 - JUMP_HEIGHT;
-      }
+  doFall() {
+    if (this.isJumping && !this.canJump) {
+      this.isJumping = false;
     }
   }
 

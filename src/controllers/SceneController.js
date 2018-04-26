@@ -18,7 +18,7 @@ class SceneController {
 
     this.score = new Score(this.scenes.top);
     this.floorController = new FloorController(this.scenes.bottom);
-    this.llamaController = new LlamaController(this.scenes.middle);
+    this.llamaController = new LlamaController(this.scenes.middle, canvas);
     this.obstacleController = new ObstacleController(this.scenes.middle);
   }
 
