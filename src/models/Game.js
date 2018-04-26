@@ -1,6 +1,8 @@
 import Reavas from 'reavas';
 import autobind from 'autobind-decorator';
+import { connect } from 'react-redux';
 
+import { gameover } from '../actions';
 import SceneController from '../controllers/SceneController';
 
 class Game extends Reavas {
@@ -18,7 +20,15 @@ class Game extends Reavas {
 
   paint(canvas, context) {
     this.sceneController.paint(context, this.speed);
+
+    if (this.sceneController.isGameOver()) {
+      this.props.gameover();
+    }
   }
 }
 
-export default Game;
+const mapDispatchToProps = dispatch => ({
+  gameover: () => dispatch(gameover())
+});
+
+export default connect(null, mapDispatchToProps)(Game);

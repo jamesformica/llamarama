@@ -56,6 +56,8 @@ class SceneController {
     ...filter(this.floorController.floors, f => f.isSolid()),
     ...filter(this.obstacleController.obstacles, o => o.isSolid())
   ]
+
+  isGameOver = () => this.llamaController.isGameOver();
 }
 
 export default SceneController;
