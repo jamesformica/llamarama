@@ -10,6 +10,7 @@ const Menu = ({ onStart }) => (
   <div className={styles.wrapper}>
     <div className={styles.menu}>
       <h1 className={styles.title}>Llamarama</h1>
+      <p>Press &apos;space&apos; or <strong>click</strong> to jump!</p>
       <button className={styles.start} onClick={onStart}>START</button>
     </div>
   </div>
