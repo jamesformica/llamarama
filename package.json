@@ -2,6 +2,7 @@
   "name": "llamarama",
   "version": "0.1.0",
   "private": false,
+  "homepage": "http://jamesformica.github.io/llamarama",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

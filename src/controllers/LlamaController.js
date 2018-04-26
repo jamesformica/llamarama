@@ -23,6 +23,9 @@ class LlamaController {
 
     this.canvas.addEventListener('mousedown', this.doJump);
     this.canvas.addEventListener('mouseup', this.doFall);
+
+    this.canJump.addEventListener('touchstart', this.doJump);
+    this.canJump.addEventListener('touchend', this.doFall);
   }
 
   onKeyDown = e => e.which === 32 && this.doJump();
