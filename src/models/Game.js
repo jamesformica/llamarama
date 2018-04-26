@@ -21,14 +21,15 @@ class Game extends Reavas {
   paint(canvas, context) {
     this.sceneController.paint(context, this.speed);
 
-    if (this.sceneController.isGameOver()) {
-      this.props.gameover();
+    const { isGameOver, score } = this.sceneController.isGameOver();
+    if (isGameOver) {
+      this.props.gameover(score);
     }
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  gameover: () => dispatch(gameover())
+  gameover: score => dispatch(gameover(score))
 });
 
 export default connect(null, mapDispatchToProps)(Game);

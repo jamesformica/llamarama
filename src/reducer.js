@@ -1,7 +1,8 @@
 import { PLAY, GAMEOVER } from './actions';
 
 export const initialState = {
-  isPlaying: false
+  isPlaying: false,
+  score: 0
 };
 
 export const reducer = (state = initialState, action) => {
@@ -9,7 +10,7 @@ export const reducer = (state = initialState, action) => {
     case PLAY:
       return { ...state, isPlaying: true };
     case GAMEOVER:
-      return { ...state, isPlaying: false };
+      return { ...state, isPlaying: false, score: action.score };
     default:
       return state;
   }
