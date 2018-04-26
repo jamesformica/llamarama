@@ -30,7 +30,7 @@ class FloorController {
     const x = lastFloor ? lastFloor.x2 : 0;
     const y = this.scene.y1;
 
-    if (random(0, 5) === 0) {
+    if (this.canPlaceHole() && random(0, 5) === 0) {
       this.floors.push(
         new Hole(x, y, this.scene.height)
       );
@@ -40,6 +40,14 @@ class FloorController {
       );
     }
   }
+
+  canPlaceHole = () => (
+    this.floors.length > 4 &&
+    (
+      this.floors[this.floors.length - 1].isSolid() ||
+      this.floors[this.floors.length - 2].isSolid()
+    )
+  )
 }
 
 export default FloorController;
