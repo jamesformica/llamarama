@@ -5,6 +5,7 @@ import Score from '../models/Score'
 import FloorController from '../controllers/FloorController'
 import LlamaController from '../controllers/LlamaController'
 import ObstacleController from '../controllers/ObstacleController'
+import BackgroundController from '../controllers/BackgroundController'
 
 const SCENES = [
   { name: 'top', percent: 10 },
@@ -20,11 +21,13 @@ class SceneController {
     this.floorController = new FloorController(this.scenes.bottom)
     this.llamaController = new LlamaController(this.scenes.middle, canvas)
     this.obstacleController = new ObstacleController(this.scenes.middle)
+    this.backgroundController = new BackgroundController(this.scenes.middle)
   }
 
   paint(context, speed) {
     this.score.paint(context)
     this.floorController.paint(context, speed)
+    this.backgroundController.paint(context, speed)
     this.obstacleController.paint(context, speed)
     this.llamaController.paint(context, speed, this.getSolids())
   }
