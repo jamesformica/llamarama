@@ -2,6 +2,7 @@ import filter from 'lodash/filter'
 import random from 'lodash/random'
 
 import Tree from '../models/Tree'
+import Cactus from '../models/Cactus'
 
 export const SIZE = {
   small: 'small',
@@ -25,7 +26,11 @@ class BackgroundController {
     this.backgroundItems = filter(this.backgroundItems, i => i.x2 > 0)
 
     if (random(0, 120) === 0) {
-      this.backgroundItems.push(new Tree(this.scene))
+      if (random(0, 1)) {
+        this.backgroundItems.push(new Tree(this.scene))
+      } else {
+        this.backgroundItems.push(new Cactus(this.scene))
+      }
     }
   }
 
