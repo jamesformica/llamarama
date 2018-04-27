@@ -31,6 +31,7 @@
       "imports": "only-multiline"
     }],
     "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1, "maxBOF": 0 }],
-    "no-multi-str": 0
+    "no-multi-str": 0,
+    "semi": [1, "never"]
   }
 }

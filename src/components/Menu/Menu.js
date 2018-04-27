@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { play } from '../../actions';
+import { play } from '../../actions'
 
-import styles from './Menu.css';
+import styles from './Menu.css'
 
 const Menu = ({ onStart, score }) => (
   <div className={styles.wrapper}>
@@ -19,19 +19,19 @@ const Menu = ({ onStart, score }) => (
       <button className={styles.start} onClick={onStart}>START</button>
     </div>
   </div>
-);
+)
 
 const mapStateToProps = state => ({
   score: state.score
-});
+})
 
 const mapDispatchToProps = dispatch => ({
   onStart: () => dispatch(play())
-});
+})
 
 Menu.propTypes = {
   onStart: PropTypes.func.isRequired,
   score: PropTypes.number.isRequired
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)
