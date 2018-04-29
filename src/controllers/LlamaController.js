@@ -56,7 +56,7 @@ class LlamaController {
     const intersectingSolids = this.getIntersectingSolid(solids)
     this.adjustLlama(intersectingSolids)
 
-    this.llama.paint(context)
+    this.llama.paint(context, speed, this.isJumping)
   }
 
   calculateJump() {

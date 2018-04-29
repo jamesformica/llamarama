@@ -10,12 +10,12 @@ class Game extends Reavas {
     this.speed = 8
     this.sceneController = new SceneController(canvas)
 
-    setInterval(this.updateSpeed, 20000)
+    setInterval(this.updateSpeed, 5000)
   }
 
   @autobind
   updateSpeed() {
-    this.speed = Math.min(this.speed += 2, 12)
+    this.speed = Math.min(this.speed += 1, 16)
   }
 
   paint(canvas, context) {
