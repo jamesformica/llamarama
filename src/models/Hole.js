@@ -1,10 +1,10 @@
-import Floor from './Floor'
+import Floor, { FLOOR_WIDTH, FLOOR_HEIGHT } from './Floor'
+import img from '../sprites/floor/hole.jpg'
 
 class Hole extends Floor {
-  constructor(x, y, h) {
-    super(x, y, h)
-
-    this.colour = 'yellow'
+  setImage() {
+    this.img = new Image(FLOOR_WIDTH, FLOOR_HEIGHT)
+    this.img.src = img
   }
 
   isSolid = () => false;
@@ -13,8 +13,7 @@ class Hole extends Floor {
     this.x1 -= speed
 
     context.beginPath()
-    context.fillStyle = this.colour
-    context.fillRect(this.x1, this.y1, this.width, this.height)
+    context.drawImage(this.img, this.x1, this.y1, this.width, this.height)
   }
 }
 

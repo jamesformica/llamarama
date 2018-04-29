@@ -9,7 +9,7 @@ import BackgroundController from '../controllers/BackgroundController'
 
 const SCENES = [
   { name: 'top', percent: 10 },
-  { name: 'middle', percent: 70, extra: 3 },
+  { name: 'middle', percent: 70, extra: 2 },
   { name: 'bottom', percent: 20 }
 ]
 

@@ -2,9 +2,10 @@ import Drawable from './Drawable'
 import { calculateSize } from '../helpers/sizeHelper'
 import img from '../sprites/floor/floor.png'
 
+const STRETCH_AMOUNT = 16
 const FULL_FLOOR_WIDTH = 600
-const FLOOR_WIDTH = FULL_FLOOR_WIDTH / 3
-const FLOOR_HEIGHT = 175
+export const FLOOR_WIDTH = FULL_FLOOR_WIDTH / 3
+export const FLOOR_HEIGHT = 175
 
 class Floor extends Drawable {
   constructor(x, y, h, frame) {
@@ -12,7 +13,6 @@ class Floor extends Drawable {
 
     super(x, y, width, height)
     this.frame = frame
-
     this.setImage()
   }
 
@@ -34,9 +34,9 @@ class Floor extends Drawable {
       FLOOR_WIDTH,
       FLOOR_HEIGHT,
       this.x1,
-      this.y1,
+      this.y1 - STRETCH_AMOUNT,
       this.width,
-      this.height
+      this.height + STRETCH_AMOUNT
     )
   }
 }
