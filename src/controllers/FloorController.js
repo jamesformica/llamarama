@@ -8,6 +8,7 @@ import Hole from '../models/Hole'
 class FloorController {
   constructor(scene) {
     this.scene = scene
+    this.frameCount = 0
     this.floors = []
 
     do {
@@ -36,8 +37,9 @@ class FloorController {
       )
     } else {
       this.floors.push(
-        new Floor(x, y, this.scene.height)
+        new Floor(x, y, this.scene.height, this.frameCount)
       )
+      this.frameCount = (this.frameCount + 1) % 3
     }
   }
 

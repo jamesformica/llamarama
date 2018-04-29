@@ -4,8 +4,10 @@ import { SIZE, SIZES } from '../controllers/BackgroundController'
 import { calculateSize } from '../helpers/sizeHelper'
 import Drawable from './Drawable'
 
-const TREE_WIDTH = 200
-const TREE_HEIGHT = 100
+import img from '../sprites/tree/tree.png'
+
+const TREE_WIDTH = 300
+const TREE_HEIGHT = 281
 
 const getDesiredHeight = (size, { height }) => {
   switch (size) {
@@ -30,14 +32,15 @@ class Tree extends Drawable {
     super(scene.x2, y, width, height)
 
     this.size = size
+    this.img = new Image(TREE_WIDTH, TREE_HEIGHT)
+    this.img.src = img
   }
 
   paint(context, speed) {
     this.x1 -= this.getSpeed(speed)
 
     context.beginPath()
-    context.fillStyle = 'hotpink'
-    context.fillRect(this.x1, this.y1, this.width, this.height)
+    context.drawImage(this.img, this.x1, this.y1, this.width, this.height)
   }
 
   getSpeed = (speed) => {

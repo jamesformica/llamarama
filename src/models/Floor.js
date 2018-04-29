@@ -1,18 +1,24 @@
-import random from 'lodash/random'
-
 import Drawable from './Drawable'
 import { calculateSize } from '../helpers/sizeHelper'
+import img from '../sprites/floor/floor.png'
 
-const FLOOR_WIDTH = 260
-const FLOOR_HEIGHT = 180
+const FULL_FLOOR_WIDTH = 600
+const FLOOR_WIDTH = FULL_FLOOR_WIDTH / 3
+const FLOOR_HEIGHT = 175
 
 class Floor extends Drawable {
-  constructor(x, y, h) {
+  constructor(x, y, h, frame) {
     const { width, height } = calculateSize(FLOOR_WIDTH, FLOOR_HEIGHT, h)
-    super(x, y, width, height)
 
-    const colours = ['crimson', 'steelblue', 'purple']
-    this.colour = colours[random(0, colours.length - 1)]
+    super(x, y, width, height)
+    this.frame = frame
+
+    this.setImage()
+  }
+
+  setImage() {
+    this.img = new Image(FULL_FLOOR_WIDTH, FLOOR_HEIGHT)
+    this.img.src = img
   }
 
   isSolid = () => true;
@@ -21,8 +27,17 @@ class Floor extends Drawable {
     this.x1 -= speed
 
     context.beginPath()
-    context.fillStyle = this.colour
-    context.fillRect(this.x1, this.y1, this.width, this.height)
+    context.drawImage(
+      this.img,
+      this.frame * FLOOR_WIDTH,
+      0,
+      FLOOR_WIDTH,
+      FLOOR_HEIGHT,
+      this.x1,
+      this.y1,
+      this.width,
+      this.height
+    )
   }
 }
 

@@ -9,7 +9,7 @@ import BackgroundController from '../controllers/BackgroundController'
 
 const SCENES = [
   { name: 'top', percent: 10 },
-  { name: 'middle', percent: 70 },
+  { name: 'middle', percent: 70, extra: 3 },
   { name: 'bottom', percent: 20 }
 ]
 
@@ -26,9 +26,9 @@ class SceneController {
 
   paint(context, speed) {
     this.score.paint(context)
-    this.floorController.paint(context, speed)
     this.backgroundController.paint(context, speed)
     this.obstacleController.paint(context, speed)
+    this.floorController.paint(context, speed)
     this.llamaController.paint(context, speed, this.getSolids())
   }
 
@@ -43,7 +43,7 @@ class SceneController {
         x1: 0,
         x2: canvas.width,
         y1: currentY1,
-        y2: currentY2,
+        y2: currentY2 + (curr.extra ? this.getHeightPercent(curr.extra, canvas.height) : 0),
         height: currHeight,
         percent: curr.percent
       }
