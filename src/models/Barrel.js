@@ -2,8 +2,10 @@ import Drawable from './Drawable'
 
 import { calculateSize } from '../helpers/sizeHelper'
 
-const BARREL_WIDTH = 90
-const BARREL_HEIGHT = 120
+import img from '../sprites/barrel/barrel.png'
+
+const BARREL_WIDTH = 200
+const BARREL_HEIGHT = 271
 
 class Barrel extends Drawable {
   constructor(scene, h) {
@@ -11,6 +13,8 @@ class Barrel extends Drawable {
     const y = scene.y2 - height
 
     super(scene.x2, y, width, height)
+    this.img = new Image(BARREL_WIDTH, BARREL_HEIGHT)
+    this.img.src = img
   }
 
   isSolid = () => true;
@@ -19,8 +23,7 @@ class Barrel extends Drawable {
     this.x1 -= speed
 
     context.beginPath()
-    context.fillStyle = 'brown'
-    context.fillRect(this.x1, this.y1, this.width, this.height)
+    context.drawImage(this.img, this.x1, this.y1, this.width, this.height)
   }
 }
 
