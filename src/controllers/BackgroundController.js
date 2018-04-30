@@ -40,6 +40,7 @@ class BackgroundController {
     this.getItemsOfSize(SIZE.large).map(i => i.paint(context, speed))
 
     this.trees = filter(this.trees, i => i.x2 > 0)
+    this.mountains = filter(this.mountains, m => m.x2 > 0)
 
     if (random(0, 80) === 0) {
       if (random(0, 1)) {
