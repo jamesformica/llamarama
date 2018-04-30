@@ -1,8 +1,10 @@
 import filter from 'lodash/filter'
 import random from 'lodash/random'
+import last from 'lodash/last'
 
 import Tree from '../models/Tree'
 import Tree2 from '../models/Tree2'
+import Mountain from '../models/Mountain'
 import Sky from '../sprites/sky.jpg'
 
 export const SIZE = {
@@ -18,6 +20,11 @@ class BackgroundController {
     this.canvas = canvas
     this.scene = scene
     this.trees = []
+    this.mountains = []
+
+    do {
+      this.addMountain()
+    } while (last(this.mountains).x2 < this.scene.x2)
 
     this.sky = new Image(1000, 707)
     this.sky.src = Sky
@@ -26,19 +33,31 @@ class BackgroundController {
   paint(context, speed) {
     this.paintSky(context)
 
+    this.mountains.map(m => m.paint(context, speed))
+
     this.getItemsOfSize(SIZE.small).map(i => i.paint(context, speed))
     this.getItemsOfSize(SIZE.medium).map(i => i.paint(context, speed))
     this.getItemsOfSize(SIZE.large).map(i => i.paint(context, speed))
 
     this.trees = filter(this.trees, i => i.x2 > 0)
 
-    if (random(0, 100) === 0) {
+    if (random(0, 80) === 0) {
       if (random(0, 1)) {
         this.trees.push(new Tree(this.scene))
       } else {
         this.trees.push(new Tree2(this.scene))
       }
     }
+
+    if (last(this.mountains).x2 < this.scene.x2) {
+      this.addMountain()
+    }
+  }
+
+  addMountain() {
+    const lastMountain = last(this.mountains)
+    const x = lastMountain ? lastMountain.x2 : 0
+    this.mountains.push(new Mountain(x, this.scene))
   }
 
   paintSky = (context) => {

@@ -1,8 +1,8 @@
 import random from 'lodash/random'
 
+import Drawable from './Drawable'
 import { SIZE, SIZES } from '../controllers/BackgroundController'
 import { calculateSize, getDesiredTreeHeight } from '../helpers/sizeHelper'
-import Drawable from './Drawable'
 
 import img from '../sprites/tree/tree.png'
 

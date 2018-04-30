@@ -10,7 +10,7 @@ import BackgroundController from '../controllers/BackgroundController'
 
 const SCENES = [
   { name: 'top', percent: 10 },
-  { name: 'middle', percent: 70, extra: 2 },
+  { name: 'middle', percent: 70 },
   { name: 'bottom', percent: 20 }
 ]
 
@@ -44,7 +44,7 @@ class SceneController {
         x1: 0,
         x2: canvas.width,
         y1: currentY1,
-        y2: currentY2 + (curr.extra ? this.getHeightPercent(curr.extra, canvas.height) : 0),
+        y2: currentY2,
         height: currHeight,
         percent: curr.percent
       }
