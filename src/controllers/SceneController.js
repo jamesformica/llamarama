@@ -1,5 +1,6 @@
 import reduce from 'lodash/reduce'
 import filter from 'lodash/filter'
+import last from 'lodash/last'
 
 import Score from '../models/Score'
 import FloorController from '../controllers/FloorController'
@@ -28,7 +29,7 @@ class SceneController {
     this.score.paint(context)
     this.backgroundController.paint(context, speed)
     this.floorController.paint(context, speed)
-    this.obstacleController.paint(context, speed)
+    this.obstacleController.paint(context, speed, this.isSolid())
     this.llamaController.paint(context, speed, this.getSolids())
   }
 
@@ -59,6 +60,8 @@ class SceneController {
     ...filter(this.floorController.floors, f => f.isSolid()),
     ...filter(this.obstacleController.obstacles, o => o.isSolid())
   ]
+
+  isSolid = () => last(this.floorController.floors).isSolid()
 
   isGameOver = () => ({
     isGameOver: this.llamaController.isGameOver(),

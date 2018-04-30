@@ -17,7 +17,7 @@ class BackgroundController {
   constructor(scene, canvas) {
     this.canvas = canvas
     this.scene = scene
-    this.backgroundItems = []
+    this.trees = []
 
     this.sky = new Image(1000, 707)
     this.sky.src = Sky
@@ -30,13 +30,13 @@ class BackgroundController {
     this.getItemsOfSize(SIZE.medium).map(i => i.paint(context, speed))
     this.getItemsOfSize(SIZE.large).map(i => i.paint(context, speed))
 
-    this.backgroundItems = filter(this.backgroundItems, i => i.x2 > 0)
+    this.trees = filter(this.trees, i => i.x2 > 0)
 
     if (random(0, 100) === 0) {
       if (random(0, 1)) {
-        this.backgroundItems.push(new Tree(this.scene))
+        this.trees.push(new Tree(this.scene))
       } else {
-        this.backgroundItems.push(new Tree2(this.scene))
+        this.trees.push(new Tree2(this.scene))
       }
     }
   }
@@ -46,7 +46,7 @@ class BackgroundController {
     context.drawImage(this.sky, 0, 0, this.canvas.width, this.canvas.height)
   }
 
-  getItemsOfSize = size => filter(this.backgroundItems, i => i.isSize(size))
+  getItemsOfSize = size => filter(this.trees, i => i.isSize(size))
 }
 
 export default BackgroundController

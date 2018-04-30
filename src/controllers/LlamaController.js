@@ -5,7 +5,6 @@ import Llama from '../models/Llama'
 
 const FALL_SPEED = 6
 const JUMP_SPEED = 8
-const JUMP_HEIGHT = 180
 
 class LlamaController {
   constructor(scene, canvas) {
@@ -37,7 +36,7 @@ class LlamaController {
     if (!this.isJumping && this.canJump) {
       this.isJumping = true
       this.canJump = false
-      this.maxJump = this.llama.y1 - JUMP_HEIGHT
+      this.maxJump = this.llama.y1 - (this.scene.height * 0.3)
     }
   }
 
