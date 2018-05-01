@@ -10,11 +10,11 @@ class Score {
     this.score += 1
 
     context.beginPath()
-    context.fillStyle = 'crimson'
+    context.fillStyle = 'black'
     context.font = `${this.fontSize}px Arial`
     context.textAlign = 'right'
     context.textBaseline = 'top'
-    context.fillText(`score: ${this.score}`, this.x, this.y)
+    context.fillText(`SCORE: ${this.score}`, this.x, this.y)
   }
 }
 

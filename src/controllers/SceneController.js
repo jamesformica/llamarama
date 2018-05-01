@@ -26,11 +26,11 @@ class SceneController {
   }
 
   paint(context, speed) {
-    this.score.paint(context)
     this.backgroundController.paint(context, speed)
     this.floorController.paint(context, speed)
     this.obstacleController.paint(context, speed, this.isSolid())
     this.llamaController.paint(context, speed, this.getSolids())
+    this.score.paint(context)
   }
 
   defineScenes = (canvas) => {
