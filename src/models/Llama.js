@@ -3,6 +3,7 @@ import Drawable from './Drawable'
 import { calculateSize } from '../helpers/sizeHelper'
 import img from '../sprites/llama/llama_walk.png'
 import imgJump from '../sprites/llama/llama_jump.png'
+import imgSlide from '../sprites/llama/llama_sliding.png'
 
 const LLAMA_WIDTH = 196
 const LLAMA_HEIGHT = 240
@@ -19,6 +20,8 @@ class Llama extends Drawable {
     this.img.src = img
     this.imgJump = new Image(LLAMA_WIDTH, LLAMA_HEIGHT)
     this.imgJump.src = imgJump
+    this.imgSlide = new Image(LLAMA_WIDTH, LLAMA_HEIGHT)
+    this.imgSlide.src = imgSlide
 
     this.frame = 0
     this.delay = 0
@@ -26,10 +29,12 @@ class Llama extends Drawable {
 
   isSolid = () => true;
 
-  paint(context, speed, isJumping) {
+  paint(context, speed, isJumping, isSliding) {
     context.beginPath()
 
-    if (isJumping) {
+    if (isSliding) {
+      context.drawImage(this.imgSlide, this.x1, this.y1, this.width, this.height)
+    } else if (isJumping) {
       context.drawImage(this.imgJump, this.x1, this.y1, this.width, this.height)
     } else {
       context.drawImage(

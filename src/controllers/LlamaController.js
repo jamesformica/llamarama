@@ -13,6 +13,7 @@ class LlamaController {
 
     this.isJumping = false
     this.canJump = false
+    this.isSliding = false
 
     document.addEventListener('keydown', this.onKeyDown)
     document.addEventListener('keyup', this.onKeyUp)
@@ -30,7 +31,7 @@ class LlamaController {
 
   @autobind
   doJump() {
-    if (!this.isJumping && this.canJump) {
+    if (!this.isSliding && !this.isJumping && this.canJump) {
       this.isJumping = true
       this.canJump = false
       this.maxJump = this.llama.y1 - (this.scene.height * 0.4)
@@ -44,7 +45,7 @@ class LlamaController {
     }
   }
 
-  paint(context, speed, solids) {
+  paint(context, speed, solids, bananas) {
     this.fallSpeed = speed * 1.1
     this.jumpSpeed = speed * 1.2
 
@@ -52,10 +53,13 @@ class LlamaController {
       this.calculateJump()
     }
 
-    const intersectingSolids = this.getIntersectingSolid(solids)
+    const intersectingSolids = this.getIntersectingItems(solids)
     this.adjustLlama(intersectingSolids)
 
-    this.llama.paint(context, speed, !this.canJump)
+    const intersectingBanana = this.getIntersectingItems(bananas)
+    this.isSliding = intersectingBanana.length > 0
+
+    this.llama.paint(context, speed, !this.canJump, this.isSliding)
   }
 
   calculateJump() {
@@ -88,8 +92,8 @@ class LlamaController {
     }
   }
 
-  getIntersectingSolid = solids =>
-    filter(solids, s => !(
+  getIntersectingItems = items =>
+    filter(items, s => !(
       s.x1 > this.llama.x2 ||
       s.x2 < this.llama.x1 ||
       s.y1 > this.llama.y2 + this.fallSpeed ||
