@@ -24,11 +24,11 @@ export const getDesiredTreeHeight = (size, { height }) => {
 export const getDesiredMountainHeight = (size, { height }) => {
   switch (size) {
     case SIZE.small:
-      return height * 0.3
+      return height * 0.2
     case SIZE.medium:
-      return height * 0.5
+      return height * 0.4
     case SIZE.large:
-      return height * 0.8
+      return height * 0.7
     default:
       return 0
   }
