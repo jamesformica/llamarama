@@ -10,7 +10,7 @@ const LLAMA_HEIGHT = 240
 class Llama extends Drawable {
   constructor(scene, h) {
     const { width, height } = calculateSize(LLAMA_WIDTH, LLAMA_HEIGHT, h)
-    const x = scene.x1 + 200
+    const x = scene.x1 + (scene.width * 0.1)
     const y = scene.y2 - height - 20
 
     super(x, y, width, height)

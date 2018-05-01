@@ -45,6 +45,7 @@ class SceneController {
         x2: canvas.width,
         y1: currentY1,
         y2: currentY2,
+        width: canvas.width,
         height: currHeight,
         percent: curr.percent
       }

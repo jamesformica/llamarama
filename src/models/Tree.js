@@ -1,7 +1,8 @@
 import random from 'lodash/random'
 
 import Drawable from './Drawable'
-import { SIZE, SIZES } from '../controllers/BackgroundController'
+import { SIZES } from '../controllers/BackgroundController'
+import { getTreeSpeed } from '../helpers/speedHelper'
 import { calculateSize, getDesiredTreeHeight } from '../helpers/sizeHelper'
 
 import img from '../sprites/tree/tree.png'
@@ -24,23 +25,10 @@ class Tree extends Drawable {
   }
 
   paint(context, speed) {
-    this.x1 -= this.getSpeed(speed)
+    this.x1 -= getTreeSpeed(speed, this.size)
 
     context.beginPath()
     context.drawImage(this.img, this.x1, this.y1, this.width, this.height)
-  }
-
-  getSpeed = (speed) => {
-    switch (this.size) {
-      case SIZE.small:
-        return speed * 0.25
-      case SIZE.medium:
-        return speed * 0.5
-      case SIZE.large:
-        return speed * 0.8
-      default:
-        return speed
-    }
   }
 
   isSize = size => size === this.size

@@ -3,9 +3,6 @@ import filter from 'lodash/filter'
 
 import Llama from '../models/Llama'
 
-const FALL_SPEED = 6
-const JUMP_SPEED = 8
-
 class LlamaController {
   constructor(scene, canvas) {
     this.scene = scene
@@ -36,7 +33,7 @@ class LlamaController {
     if (!this.isJumping && this.canJump) {
       this.isJumping = true
       this.canJump = false
-      this.maxJump = this.llama.y1 - (this.scene.height * 0.3)
+      this.maxJump = this.llama.y1 - (this.scene.height * 0.4)
     }
   }
 
@@ -48,6 +45,9 @@ class LlamaController {
   }
 
   paint(context, speed, solids) {
+    this.fallSpeed = speed * 1.1
+    this.jumpSpeed = speed * 1.2
+
     if (this.isJumping) {
       this.calculateJump()
     }
@@ -59,7 +59,7 @@ class LlamaController {
   }
 
   calculateJump() {
-    const nextJump = Math.max(this.llama.y1 - JUMP_SPEED, this.maxJump)
+    const nextJump = Math.max(this.llama.y1 - this.jumpSpeed, this.maxJump)
     if (nextJump === this.maxJump) {
       this.isJumping = false
     }
@@ -83,7 +83,7 @@ class LlamaController {
     })
 
     if (!this.isJumping && (solids.length === 0 || shouldFall)) {
-      this.llama.y1 += FALL_SPEED
+      this.llama.y1 += this.fallSpeed
       this.canJump = false
     }
   }
@@ -92,8 +92,8 @@ class LlamaController {
     filter(solids, s => !(
       s.x1 > this.llama.x2 ||
       s.x2 < this.llama.x1 ||
-      s.y1 > this.llama.y2 + FALL_SPEED ||
-      s.y2 < this.llama.y1 + FALL_SPEED
+      s.y1 > this.llama.y2 + this.fallSpeed ||
+      s.y2 < this.llama.y1 + this.fallSpeed
     ));
 
   isGameOver = () => (this.llama.x2 < 0 || this.llama.y1 > this.canvas.height)

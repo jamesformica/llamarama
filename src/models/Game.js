@@ -3,11 +3,12 @@ import autobind from 'autobind-decorator'
 import { connect } from 'react-redux'
 
 import { gameover } from '../actions'
+import { getMoveSpeed } from '../helpers/speedHelper'
 import SceneController from '../controllers/SceneController'
 
 class Game extends Reavas {
   setup(canvas) {
-    this.speed = 8
+    this.speed = 0.5
     this.sceneController = new SceneController(canvas)
 
     setInterval(this.updateSpeed, 5000)
@@ -15,11 +16,12 @@ class Game extends Reavas {
 
   @autobind
   updateSpeed() {
-    this.speed = Math.min(this.speed += 1, 16)
+    this.speed = Math.min(this.speed += 0.1, 1)
   }
 
   paint(canvas, context) {
-    this.sceneController.paint(context, this.speed)
+    const speed = getMoveSpeed(this.speed, this.canvas.width)
+    this.sceneController.paint(context, speed)
 
     const { isGameOver, score } = this.sceneController.isGameOver()
     if (isGameOver) {

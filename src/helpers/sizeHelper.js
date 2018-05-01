@@ -28,7 +28,7 @@ export const getDesiredMountainHeight = (size, { height }) => {
     case SIZE.medium:
       return height * 0.4
     case SIZE.large:
-      return height * 0.7
+      return height * 0.6
     default:
       return 0
   }
