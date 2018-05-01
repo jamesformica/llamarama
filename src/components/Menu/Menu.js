@@ -18,7 +18,7 @@ class Menu extends Component {
       <div className={styles.wrapper}>
         <div className={styles.menu}>
           <h1 className={styles.title}>Llamarama</h1>
-          <p>Press &apos;space&apos; or click to jump!</p>
+          <p className={styles.text}>Press &apos;space&apos; or click to jump!</p>
           <p className={styles.text}>
             Your score
           <br />

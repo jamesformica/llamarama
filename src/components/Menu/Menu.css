@@ -4,7 +4,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,21 +13,26 @@
 .menu {
   background-color: white;
   border-radius: 3px;
-
+  min-width: 50%;
+  min-height: 60%;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem;
+  padding: 1.75rem;
+  overflow: auto;
 }
 
 .title {
+  margin: 0;
   font-size: 3rem;
   letter-spacing: 0.25rem;
   color: hotpink;
 }
 
 .text {
+  margin: 0;
   text-align: center;
 }
 
@@ -38,7 +42,8 @@
 }
 
 .start {
-  margin-top: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
   padding: 1rem 2rem;
   color: white;
   font-size: 1rem;
@@ -57,3 +62,11 @@
   transform: translateY(3px);
 }
 
+@media (max-width: 30rem) {
+  .menu {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    padding: 1rem;
+  }
+}
