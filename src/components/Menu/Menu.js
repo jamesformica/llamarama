@@ -8,11 +8,13 @@ import styles from './Menu.css'
 
 class Menu extends Component {
   componentDidMount() {
-    this.button.focus()
+    if (this.button) {
+      this.button.focus()
+    }
   }
 
   render() {
-    const { onStart, score } = this.props
+    const { isReady, onStart, score } = this.props
 
     return (
       <div className={styles.wrapper}>
@@ -24,9 +26,14 @@ class Menu extends Component {
           <br />
             <span className={styles.score}>{score}</span>
           </p>
-          <button className={styles.start} onClick={onStart} ref={(b) => { this.button = b }}>
-            START
-          </button>
+          {isReady
+            ? (
+              <button className={styles.start} onClick={onStart} ref={(b) => { this.button = b }}>
+                START
+              </button>
+            ) : (
+              <button className={styles.start}>LOADING...</button>
+            )}
         </div>
       </div>
     )
@@ -34,7 +41,8 @@ class Menu extends Component {
 }
 
 const mapStateToProps = state => ({
-  score: state.score
+  score: state.score,
+  isReady: state.ready
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -43,7 +51,8 @@ const mapDispatchToProps = dispatch => ({
 
 Menu.propTypes = {
   onStart: PropTypes.func.isRequired,
-  score: PropTypes.number.isRequired
+  score: PropTypes.number.isRequired,
+  isReady: PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu)

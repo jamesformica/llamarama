@@ -18,7 +18,6 @@ class FloorController {
 
   paint(context, speed) {
     this.floors.forEach(f => f.paint(context, speed))
-
     this.floors = filter(this.floors, f => f.x2 > 0)
 
     if (last(this.floors).x2 <= this.scene.x2) {
@@ -32,13 +31,9 @@ class FloorController {
     const y = this.scene.y1
 
     if (this.canPlaceHole(x) && random(0, 5) === 0) {
-      this.floors.push(
-        new Hole(x, y, this.scene.height)
-      )
+      this.floors.push(new Hole(x, y, this.scene.height))
     } else {
-      this.floors.push(
-        new Floor(x, y, this.scene.height, this.frameCount)
-      )
+      this.floors.push(new Floor(x, y, this.scene.height, this.frameCount))
       this.frameCount = (this.frameCount + 1) % 3
     }
   }

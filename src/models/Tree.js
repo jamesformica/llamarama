@@ -5,7 +5,7 @@ import { SIZES } from '../controllers/BackgroundController'
 import { getTreeSpeed } from '../helpers/speedHelper'
 import { calculateSize, getDesiredTreeHeight } from '../helpers/sizeHelper'
 
-import img from '../sprites/tree/tree.png'
+import img from '../sprites/tree.png'
 
 const TREE_WIDTH = 300
 const TREE_HEIGHT = 281

@@ -1,6 +1,6 @@
 import Drawable from './Drawable'
 import { calculateSize } from '../helpers/sizeHelper'
-import img from '../sprites/floor/floor.png'
+import img from '../sprites/floor.png'
 
 const STRETCH_AMOUNT = 16
 const FULL_FLOOR_WIDTH = 600

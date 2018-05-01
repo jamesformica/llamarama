@@ -2,7 +2,7 @@ import Drawable from './Drawable'
 
 import { calculateSize } from '../helpers/sizeHelper'
 
-import img from '../sprites/barrel/barrel.png'
+import img from '../sprites/barrel.png'
 
 const BARREL_WIDTH = 200
 const BARREL_HEIGHT = 271

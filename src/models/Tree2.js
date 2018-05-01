@@ -5,7 +5,7 @@ import { calculateSize, getDesiredTreeHeight } from '../helpers/sizeHelper'
 import { getTreeSpeed } from '../helpers/speedHelper'
 import Drawable from './Drawable'
 
-import img from '../sprites/tree/tree_2.png'
+import img from '../sprites/tree_2.png'
 
 const TREE_WIDTH = 245
 const TREE_HEIGHT = 300

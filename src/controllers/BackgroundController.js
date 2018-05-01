@@ -2,6 +2,7 @@ import filter from 'lodash/filter'
 import random from 'lodash/random'
 import last from 'lodash/last'
 
+import { fiftyfifty } from '../helpers/luckHelper'
 import Tree from '../models/Tree'
 import Tree2 from '../models/Tree2'
 import Mountain from '../models/Mountain'
@@ -42,8 +43,8 @@ class BackgroundController {
     this.trees = filter(this.trees, i => i.x2 > 0)
     this.mountains = filter(this.mountains, m => m.x2 > 0)
 
-    if (random(0, 80) === 0) {
-      if (random(0, 1)) {
+    if (random(0, 70) === 0) {
+      if (fiftyfifty()) {
         this.trees.push(new Tree(this.scene))
       } else {
         this.trees.push(new Tree2(this.scene))
