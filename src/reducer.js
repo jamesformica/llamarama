@@ -13,7 +13,7 @@ export const reducer = (state = initialState, action) => {
     case GAMEOVER:
       return { ...state, isPlaying: false, score: action.score }
     case READY:
-      return { ...state, ready: true, sprites: action.sprites }
+      return { ...state, ready: true }
     default:
       return state
   }

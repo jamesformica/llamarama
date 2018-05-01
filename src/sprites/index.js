@@ -7,6 +7,10 @@ import sky from './sky.jpg'
 import tree2 from './tree_2.png'
 import tree from './tree.png'
 
+import llamaJump from './llama/llama_jump.png'
+import llamaSlide from './llama/llama_sliding.png'
+import llamaWalk from './llama/llama_walk.png'
+
 export default [
   banana,
   barrel,
@@ -15,5 +19,8 @@ export default [
   mountain,
   sky,
   tree2,
-  tree
+  tree,
+  llamaJump,
+  llamaSlide,
+  llamaWalk
 ]

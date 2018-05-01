@@ -7,11 +7,11 @@ export const loadSprites = () => {
     new Promise((resolve) => {
       const img = new Image()
       img.src = s
-      img.onload = () => resolve(img)
+      img.onload = () => resolve()
     })
   ))
 
-  Promise.all(promises).then((loadedSprites) => {
-    store.dispatch(ready(loadedSprites))
+  Promise.all(promises).then(() => {
+    store.dispatch(ready())
   })
 }
