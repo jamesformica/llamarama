@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { play } from '../../actions'
+import bg from './llama_bg.jpg'
 
 import styles from './Menu.css'
 
@@ -18,7 +19,7 @@ class Menu extends Component {
 
     return (
       <div className={styles.wrapper}>
-        <div className={styles.menu}>
+        <div className={styles.menu} style={{ backgroundImage: `url('${bg}')` }}>
           <h1 className={styles.title}>Llamarama</h1>
           <p className={styles.text}>Press &apos;space&apos; or click to jump!</p>
           <p className={styles.text}>
