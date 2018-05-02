@@ -11,6 +11,7 @@ class LlamaController {
     const desiredHeight = this.scene.height * 0.3
     this.llama = new Llama(this.scene, desiredHeight)
 
+    this.idealX = this.llama.x1
     this.isJumping = false
     this.canJump = false
     this.isSliding = false
@@ -51,6 +52,10 @@ class LlamaController {
 
     if (this.isJumping) {
       this.calculateJump()
+    }
+
+    if (this.llama.x1 < this.idealX) {
+      this.llama.x1 += (speed * 0.1)
     }
 
     const intersectingSolids = this.getIntersectingItems(solids)
