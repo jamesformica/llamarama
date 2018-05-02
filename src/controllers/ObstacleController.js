@@ -26,9 +26,7 @@ class ObstacleController {
     }
   }
 
-  getBananas = () => (
-    filter(this.obstacles, o => o.constructor.name === 'Banana')
-  )
+  getBananas = () => filter(this.obstacles, o => o.isBanana())
 }
 
 export default ObstacleController
