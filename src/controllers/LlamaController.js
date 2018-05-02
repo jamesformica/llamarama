@@ -46,7 +46,7 @@ class LlamaController {
   }
 
   paint(context, speed, solids, bananas) {
-    this.fallSpeed = speed * 1.1
+    this.fallSpeed = speed * 1.3
     this.jumpSpeed = speed * 1.2
 
     if (this.isJumping) {

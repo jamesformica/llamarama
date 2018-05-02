@@ -25,7 +25,7 @@ class Menu extends Component {
           <p className={styles.text}>
             Your score
           <br />
-            <span className={styles.score}>{score}</span>
+            <span className={styles.score}>{score} meters</span>
           </p>
           {isReady
             ? (

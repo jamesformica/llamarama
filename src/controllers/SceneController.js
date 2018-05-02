@@ -68,7 +68,7 @@ class SceneController {
 
   isGameOver = () => ({
     isGameOver: this.llamaController.isGameOver(),
-    score: this.score.score
+    score: this.score.getScore()
   });
 }
 
