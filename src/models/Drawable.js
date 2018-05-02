@@ -9,8 +9,6 @@ class Drawable {
   get x2() { return this.x1 + this.width }
   get y2() { return this.y1 + this.height }
 
-  isBanana = () => false
-
   isSolid = () => { throw new Error('OVERRIDE isSolid() IN IMPLEMENTATION') }
 
   /* eslint-disable-next-line class-methods-use-this */

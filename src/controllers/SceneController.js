@@ -59,7 +59,7 @@ class SceneController {
 
   getSolids = () => [
     ...filter(this.floorController.floors, f => f.isSolid()),
-    ...filter(this.obstacleController.obstacles, o => o.isSolid())
+    ...this.obstacleController.getBarrels()
   ]
 
   getBananas = () => this.obstacleController.getBananas()

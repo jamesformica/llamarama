@@ -19,8 +19,6 @@ class Banana extends Drawable {
 
   isSolid = () => false
 
-  isBanana = () => true
-
   paint(context, speed) {
     this.x1 -= speed
 

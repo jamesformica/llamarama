@@ -17,7 +17,7 @@ class Barrel extends Drawable {
     this.img.src = img
   }
 
-  isSolid = () => true;
+  isSolid = () => true
 
   paint(context, speed) {
     this.x1 -= speed

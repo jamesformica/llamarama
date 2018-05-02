@@ -26,7 +26,9 @@ class ObstacleController {
     }
   }
 
-  getBananas = () => filter(this.obstacles, o => o.isBanana())
+  getBananas = () => filter(this.obstacles, o => !o.isSolid())
+
+  getBarrels = () => filter(this.obstacles, o => o.isSolid())
 }
 
 export default ObstacleController
