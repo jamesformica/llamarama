@@ -1,16 +1,17 @@
 {
   "main.css": "static/css/main.a7659620.css",
   "main.css.map": "static/css/main.a7659620.css.map",
-  "main.js": "static/js/main.b253bb22.js",
-  "main.js.map": "static/js/main.b253bb22.js.map",
+  "main.js": "static/js/main.1948f771.js",
+  "main.js.map": "static/js/main.1948f771.js.map",
   "static/media/banana.png": "static/media/banana.89defd35.png",
   "static/media/barrel.png": "static/media/barrel.15b29094.png",
-  "static/media/floor.png": "static/media/floor.33ead9ca.png",
+  "static/media/floor.png": "static/media/floor.5d4e929a.png",
   "static/media/llama_jump.png": "static/media/llama_jump.fefd4afa.png",
   "static/media/llama_sliding.png": "static/media/llama_sliding.13c98c79.png",
   "static/media/llama_walk.png": "static/media/llama_walk.63ebb63a.png",
   "static/media/mountain.png": "static/media/mountain.4710867b.png",
   "static/media/sky.jpg": "static/media/sky.b7324fef.jpg",
+  "static/media/sun.png": "static/media/sun.cabe785d.png",
   "static/media/tree.png": "static/media/tree.a824fa75.png",
   "static/media/tree_2.png": "static/media/tree_2.a37ae7ef.png"
 }
