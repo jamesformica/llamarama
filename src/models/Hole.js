@@ -1,5 +1,5 @@
 import Floor, { FLOOR_WIDTH, FLOOR_HEIGHT } from './Floor'
-import img from '../sprites/hole.jpg'
+import img from '../sprites/hole.png'
 
 class Hole extends Floor {
   setImage() {

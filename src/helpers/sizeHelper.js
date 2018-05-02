@@ -11,11 +11,11 @@ export const calculateSize = (originalWidth, originalHeight, desiredHeight) => {
 export const getDesiredTreeHeight = (size, { height }) => {
   switch (size) {
     case SIZE.small:
-      return height * 0.3
+      return height * 0.4
     case SIZE.medium:
-      return height * 0.45
+      return height * 0.7
     case SIZE.large:
-      return height * 0.6
+      return height * 0.9
     default:
       return 0
   }

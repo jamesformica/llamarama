@@ -52,7 +52,7 @@ const mapDispatchToProps = dispatch => ({
 
 Menu.propTypes = {
   onStart: PropTypes.func.isRequired,
-  score: PropTypes.number.isRequired,
+  score: PropTypes.string.isRequired,
   isReady: PropTypes.bool.isRequired
 }
 

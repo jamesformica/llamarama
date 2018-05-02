@@ -6,6 +6,7 @@ import { fiftyfifty } from '../helpers/luckHelper'
 import Tree from '../models/Tree'
 import Tree2 from '../models/Tree2'
 import Mountain from '../models/Mountain'
+import Sun from '../models/Sun'
 import Sky from '../sprites/sky.jpg'
 
 export const SIZE = {
@@ -27,23 +28,24 @@ class BackgroundController {
       this.addMountain()
     } while (last(this.mountains).x2 < this.scene.x2)
 
+    this.sun = new Sun(scene)
     this.sky = new Image(1000, 707)
     this.sky.src = Sky
   }
 
   paint(context, speed) {
     this.paintSky(context)
-
+    this.sun.paint(context)
     this.mountains.map(m => m.paint(context, speed))
 
-    this.getItemsOfSize(SIZE.small).map(i => i.paint(context, speed))
-    this.getItemsOfSize(SIZE.medium).map(i => i.paint(context, speed))
-    this.getItemsOfSize(SIZE.large).map(i => i.paint(context, speed))
+    this.getTreesOfSize(SIZE.small).map(i => i.paint(context, speed))
+    this.getTreesOfSize(SIZE.medium).map(i => i.paint(context, speed))
+    this.getTreesOfSize(SIZE.large).map(i => i.paint(context, speed))
 
     this.trees = filter(this.trees, i => i.x2 > 0)
     this.mountains = filter(this.mountains, m => m.x2 > 0)
 
-    if (random(0, 70) === 0) {
+    if (random(0, 40) === 0) {
       if (fiftyfifty()) {
         this.trees.push(new Tree(this.scene))
       } else {
@@ -67,7 +69,7 @@ class BackgroundController {
     context.drawImage(this.sky, 0, 0, this.canvas.width, this.canvas.height)
   }
 
-  getItemsOfSize = size => filter(this.trees, i => i.isSize(size))
+  getTreesOfSize = size => filter(this.trees, i => i.isSize(size))
 }
 
 export default BackgroundController
